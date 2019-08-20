@@ -23,11 +23,12 @@ class Board extends React.Component {
 
   render() {
     let rows = [];
+    let boardSize = 3;
 
-    for(let i = 0; i < 3; i++) {
+    for(let i = 0; i < boardSize; i++) {
       let row = [];
-      for(let j = 0; j < 3; j++) {
-        let squareNumber = i*3 + j;
+      for(let j = 0; j < boardSize; j++) {
+        let squareNumber = i*boardSize + j;
         row.push(this.renderSquare(squareNumber));
       }
       rows.push(<div className="board-row" key={i}>{row}</div>);
@@ -66,10 +67,10 @@ class Game extends React.Component {
     });
   }
 
-  jumpTo(step) {
+  jumpTo(stepNumber) {
     this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      stepNumber: stepNumber,
+      xIsNext: (stepNumber % 2) === 0,
     });
   }
 
@@ -79,12 +80,15 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+      const desc = move ? 'Go to move #' + move : 'Go to game start';
+
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>
+            <button
+              onClick={() => this.jumpTo(move)}
+              style={(move === this.state.stepNumber) ? {fontWeight: 'bold'} :
+                     {fontWeight: 'normal'}}
+            >
               {desc}
             </button>
           </li>
