@@ -7,23 +7,36 @@ export default class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
+        plays: Array(9).fill(""),
       }],
       stepNumber: 0,
       xIsNext: true,
     }
   }
 
-  handleClick(i) {
+  getPlaySummary(squareNumber) {
+    let player = this.state.xIsNext ? 'X' : 'O';
+    let x = squareNumber % 3;
+    let y = Math.floor(squareNumber / 3);
+    //the origin of the xy axis is top left, not bottom left
+    y = 2 - y;
+    return player + " (" + x + ", " + y + ")";
+  }
+
+  handleClick(squareNumber) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+    const plays = current.plays.slice();
+    if (calculateWinner(squares) || squares[squareNumber]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[squareNumber] = this.state.xIsNext ? 'X' : 'O';
+    plays[this.state.stepNumber + 1] = this.getPlaySummary(squareNumber);
     this.setState({
       history: history.concat([{
         squares: squares,
+        plays: plays,
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
@@ -43,8 +56,7 @@ export default class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ? 'Go to move #' + move : 'Go to game start';
-
+      const desc = move ? 'Go to move ' + history[move].plays[move] : 'Go to game start';
         return (
           <li key={move}>
             <button
