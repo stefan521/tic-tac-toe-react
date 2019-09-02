@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from './Square.js';
 
-export default class Board extends React.Component {
+class Board extends React.Component {
   renderSquare(squareNumber) {
     return (
        <Square
@@ -28,3 +28,5 @@ export default class Board extends React.Component {
     return (<div>{rows}</div>);
   }
 }
+
+export default Board;

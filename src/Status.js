@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default class Status extends React.Component {
-
+class Status extends React.Component {
   getStatus() {
     let status;
     if (this.props.winner) {
@@ -20,5 +19,6 @@ export default class Status extends React.Component {
       </div>
     );
   }
-
 }
+
+export default Status;

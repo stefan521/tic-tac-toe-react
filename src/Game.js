@@ -3,7 +3,7 @@ import Board from './Board.js';
 import Summary from './Summary.js';
 import Status from './Status.js';
 
-export default class Game extends React.Component {
+class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -79,6 +79,8 @@ export default class Game extends React.Component {
     );
   }
 }
+
+export default Game;
 
 function calculateWinner(squares) {
   const lines = [
