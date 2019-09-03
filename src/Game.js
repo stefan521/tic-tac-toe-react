@@ -2,6 +2,7 @@ import React from 'react';
 import Board from './Board.js';
 import Summary from './Summary.js';
 import Status from './Status.js';
+import { getGameStatus } from './helper.js';
 
 class Game extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Game extends React.Component {
     const squares = current.squares.slice();
     const player = this.state.xIsNext ? 'X' : 'O';
 
-    if (calculateWinner(squares) || squares[squareNumber]) {
+    if (getGameStatus(squares).gameEnded || squares[squareNumber]) {
       return;
     }
 
@@ -54,7 +55,7 @@ class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const status = getGameStatus(current.squares);
 
     return (
       <div className="game">
@@ -67,7 +68,7 @@ class Game extends React.Component {
         <div className="game-info">
           <Status
             xIsNext={this.state.xIsNext}
-            winner={winner}
+            status={status}
           />
           <Summary
             moves={this.state.moves}
@@ -81,24 +82,3 @@ class Game extends React.Component {
 }
 
 export default Game;
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
