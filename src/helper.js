@@ -15,7 +15,7 @@ export function getGameStatus(squares) {
     return winner;
   }
 
-  let draw = checkDraw(lines, squares);
+  let draw = isBoardFull(lines, squares);
   if(draw) {
     return draw;
   }
@@ -40,7 +40,7 @@ function checkWinner(lines, squares) {
   }
 }
 
-function checkDraw(lines, squares) {
+function isBoardFull(lines, squares) {
   if(!squares.includes(null)) {
     return {
       gameEnded: true,
