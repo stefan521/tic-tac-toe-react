@@ -63,6 +63,7 @@ class Game extends React.Component {
           <Board
             squares={current.squares}
             onClick={(square) => this.handleClick(square)}
+            winLine ={status.line}
           />
         </div>
         <div className="game-info">
