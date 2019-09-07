@@ -1,7 +1,7 @@
 import React from 'react';
-import Board from './Board.js';
-import Summary from './Summary.js';
-import Status from './Status.js';
+import Board from '../Board/Board.js';
+import Summary from '../Summary/Summary.js';
+import Status from '../Status/Status.js';
 import { getGameStatus } from './helper.js';
 
 class Game extends React.Component {

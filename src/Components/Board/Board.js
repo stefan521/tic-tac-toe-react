@@ -1,11 +1,11 @@
 import React from 'react';
-import Square from './Square.js';
+import Square from '../Square/Square.js';
 
 class Board extends React.Component {
   pickSquareColor(squareNumber) {
     let winLine = this.props.winLine;
     if(winLine && winLine.includes(squareNumber)){
-      return "blue";
+      return "lightgreen";
     } else {
       return "white";
     }
