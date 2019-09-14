@@ -1,4 +1,32 @@
-export function getGameStatus(squares) {
+function checkWinner(lines, squares) {
+  for (let i = 0; i < lines.length; i += 1) {
+    const [a, b, c] = lines[i];
+
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return {
+        gameEnded: true,
+        winner: squares[a],
+        line: lines[i],
+      };
+    }
+  }
+
+  return null;
+}
+
+function isBoardFull(lines, squares) {
+  if (!squares.includes(null)) {
+    return {
+      gameEnded: true,
+      winner: null,
+      line: null,
+    };
+  }
+
+  return null;
+}
+
+function getGameStatus(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -10,13 +38,13 @@ export function getGameStatus(squares) {
     [2, 4, 6],
   ];
 
-  let winner = checkWinner(lines, squares);
-  if(winner) {
+  const winner = checkWinner(lines, squares);
+  if (winner) {
     return winner;
   }
 
-  let draw = isBoardFull(lines, squares);
-  if(draw) {
+  const draw = isBoardFull(lines, squares);
+  if (draw) {
     return draw;
   }
 
@@ -27,25 +55,5 @@ export function getGameStatus(squares) {
   };
 }
 
-function checkWinner(lines, squares) {
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return {
-        gameEnded: true,
-        winner: squares[a],
-        line: lines[i],
-      };
-    }
-  }
-}
-
-function isBoardFull(lines, squares) {
-  if(!squares.includes(null)) {
-    return {
-      gameEnded: true,
-      winner: null,
-      line: null,
-    };
-  }
-}
+// eslint-disable-next-line import/prefer-default-export
+export { getGameStatus };

@@ -1,8 +1,8 @@
 import React from 'react';
-import Board from '../Board/Board.js';
-import Summary from '../Summary/Summary.js';
-import Status from '../Status/Status.js';
-import { getGameStatus } from './helper.js';
+import Board from '../Board/Board';
+import Summary from '../Summary/Summary';
+import Status from '../Status/Status';
+import { getGameStatus } from './helper';
 
 class Game extends React.Component {
   constructor(props) {
@@ -17,17 +17,22 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
-    }
+    };
   }
 
   handleClick(squareNumber) {
+    const { history } = this.state;
+    const { stepNumber } = this.state;
+    const { xIsNext } = this.state;
+    const { moves } = this.state;
+
     // first object in the history is the initial empty board as an array
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const historyUntilStep = history.slice(0, stepNumber + 1);
     // the first move when the board is empty is null, null too
-    const moves = this.state.moves.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
+    const movesUntilStep = moves.slice(0, stepNumber + 1);
+    const current = historyUntilStep[historyUntilStep.length - 1];
     const squares = current.squares.slice();
-    const player = this.state.xIsNext ? 'X' : 'O';
+    const player = xIsNext ? 'X' : 'O';
 
     if (getGameStatus(squares).gameEnded || squares[squareNumber]) {
       return;
@@ -36,25 +41,29 @@ class Game extends React.Component {
     squares[squareNumber] = player;
 
     this.setState({
-      history: history.concat([{
-        squares: squares,
+      history: historyUntilStep.concat([{
+        squares,
       }]),
-      moves: moves.concat({player: player, square: squareNumber}),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
+      moves: movesUntilStep.concat({ player, square: squareNumber }),
+      stepNumber: historyUntilStep.length,
+      xIsNext: !xIsNext,
     });
   }
 
   jumpTo(stepNumber) {
     this.setState({
-      stepNumber: stepNumber,
+      stepNumber,
       xIsNext: (stepNumber % 2) === 0,
     });
   }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
+    const { history } = this.state;
+    const { stepNumber } = this.state;
+    const { xIsNext } = this.state;
+    const { moves } = this.state;
+
+    const current = history[stepNumber];
     const status = getGameStatus(current.squares);
 
     return (
@@ -63,17 +72,17 @@ class Game extends React.Component {
           <Board
             squares={current.squares}
             onClick={(square) => this.handleClick(square)}
-            winLine ={status.line}
+            winLine={status.line}
           />
         </div>
         <div className="game-info">
           <Status
-            xIsNext={this.state.xIsNext}
+            xIsNext={xIsNext}
             status={status}
           />
           <Summary
-            moves={this.state.moves}
-            stepNumber={this.state.stepNumber}
+            moves={moves}
+            stepNumber={stepNumber}
             onClick={(step) => this.jumpTo(step)}
           />
         </div>

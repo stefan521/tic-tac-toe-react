@@ -2,15 +2,17 @@ import React from 'react';
 
 class Status extends React.Component {
   getStatus() {
-    const status = this.props.status;
+    const { status } = this.props;
+    const { xIsNext } = this.props;
+
     let statusLine;
 
-    if(status.gameEnded && status.winner) {
-      statusLine = 'Winner: ' + status.winner;
-    } else if(status.gameEnded) {
+    if (status.gameEnded && status.winner) {
+      statusLine = `Winner: ${status.winner}`;
+    } else if (status.gameEnded) {
       statusLine = 'Draw';
     } else {
-      statusLine = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
+      statusLine = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
 
     return statusLine;
