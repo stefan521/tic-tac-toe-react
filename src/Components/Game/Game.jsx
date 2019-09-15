@@ -1,11 +1,21 @@
+// @flow
 import React from 'react';
-import Board from '../Board/Board';
-import Summary from '../Summary/Summary';
-import Status from '../Status/Status';
+import Board from '../Board/Board.jsx';
+import Summary from '../Summary/Summary.jsx';
+import Status from '../Status/Status.jsx';
 import { getGameStatus } from './helper';
 
-class Game extends React.Component {
-  constructor(props) {
+type Props = any;
+
+type State = {
+  history: Array<any>,
+  moves: Array<any>,
+  stepNumber: number,
+  xIsNext: boolean
+};
+
+class Game extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       history: [{
@@ -20,7 +30,7 @@ class Game extends React.Component {
     };
   }
 
-  handleClick(squareNumber) {
+  handleClick(squareNumber: number) {
     const { history } = this.state;
     const { stepNumber } = this.state;
     const { xIsNext } = this.state;
@@ -50,7 +60,7 @@ class Game extends React.Component {
     });
   }
 
-  jumpTo(stepNumber) {
+  jumpTo(stepNumber: number) {
     this.setState({
       stepNumber,
       xIsNext: (stepNumber % 2) === 0,

@@ -1,6 +1,13 @@
+// @flow
 import React from 'react';
 
-export default function Square(props) {
+type Props = {
+  onClick: Function,
+  color: string,
+  value: string
+};
+
+export default function Square(props: Props) {
   const { onClick } = props;
   const { color } = props;
   const { value } = props;

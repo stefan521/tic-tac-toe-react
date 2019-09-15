@@ -6,9 +6,13 @@
         "import"
     ],
     "env": {
-        "jest": true
+        "jest": true,
+        "browser": true
     },
+    "parser": "babel-eslint",
     "rules": {
-        // add custom rules here
+        "import/extensions": ["error", {
+            "jsx": "always"
+          }]
     }
 }

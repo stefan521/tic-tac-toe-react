@@ -1,15 +1,31 @@
+// @flow
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 
-class Summary extends React.Component {
-  constructor(props) {
+type Move = {
+  player: string,
+  square: number
+};
+
+type Props = {
+  moves: Array<Move>,
+  onClick: Function,
+  stepNumber: number
+};
+
+type State = {
+  descending: boolean
+};
+
+class Summary extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       descending: true,
     };
   }
 
-  getPlaySummary(move) {
+  getPlaySummary(move: Move) {
     if (move.player === null) {
       return 'go to game start';
     }
@@ -23,14 +39,15 @@ class Summary extends React.Component {
     return (summary + coordinates);
   }
 
-  getMoveAtIndex(index) {
+  getMoveAtIndex(index: number) {
     const { descending } = this.state;
     const { moves } = this.props;
 
     if (descending) {
       return index;
     }
-    const reversedIndex = moves - index - 1;
+
+    const reversedIndex = moves.length - index - 1;
     return reversedIndex;
   }
 
@@ -41,8 +58,8 @@ class Summary extends React.Component {
     const { stepNumber } = this.props;
 
     const orderedMoves = descending ? moves : moves.slice().reverse();
-    // make a li for each move
-    return orderedMoves.map((move, index) => {
+
+    const movesList = orderedMoves.map<any>((move: Move, index: number) => {
       const summary = this.getPlaySummary(move);
       return (
         // eslint-disable-next-line react/no-array-index-key
@@ -58,6 +75,8 @@ class Summary extends React.Component {
         </li>
       );
     });
+
+    return movesList;
   }
 
   reverseMoves() {

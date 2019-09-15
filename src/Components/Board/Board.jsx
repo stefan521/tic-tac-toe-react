@@ -1,8 +1,15 @@
+// @flow
 import React from 'react';
-import Square from '../Square/Square';
+import Square from '../Square/Square.jsx';
 
-class Board extends React.Component {
-  pickSquareColor(squareNumber) {
+type Props = {
+  winLine: Array<number>,
+  squares: Array<string>,
+  onClick: Function
+};
+
+class Board extends React.Component<Props> {
+  pickSquareColor(squareNumber: number) {
     const { winLine } = this.props;
     if (winLine && winLine.includes(squareNumber)) {
       return 'lightgreen';
@@ -11,7 +18,7 @@ class Board extends React.Component {
     return 'white';
   }
 
-  renderSquare(squareNumber) {
+  renderSquare(squareNumber: number) {
     const { squares } = this.props;
     const { onClick } = this.props;
 

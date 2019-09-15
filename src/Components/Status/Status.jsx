@@ -1,30 +1,31 @@
+// @flow
 import React from 'react';
 
-class Status extends React.Component {
-  getStatus() {
-    const { status } = this.props;
-    const { xIsNext } = this.props;
+type GameStatus = {
+  status: {
+    gameEnded: boolean,
+    winner: string
+  }
+};
 
-    let statusLine;
+function getStatus(status, xIsNext) {
+  let statusLine;
 
-    if (status.gameEnded && status.winner) {
-      statusLine = `Winner: ${status.winner}`;
-    } else if (status.gameEnded) {
-      statusLine = 'Draw';
-    } else {
-      statusLine = `Next player: ${xIsNext ? 'X' : 'O'}`;
-    }
-
-    return statusLine;
+  if (status.gameEnded && status.winner) {
+    statusLine = `Winner: ${status.winner}`;
+  } else if (status.gameEnded) {
+    statusLine = 'Draw';
+  } else {
+    statusLine = `Next player: ${xIsNext ? 'X' : 'O'}`;
   }
 
-  render() {
-    return (
-      <div className="game-status">
-        {this.getStatus()}
-      </div>
-    );
-  }
+  return statusLine;
 }
+
+const Status = ({ status }: GameStatus, xIsNext: boolean) => (
+  <div className="game-status">
+    {getStatus(status, xIsNext)}
+  </div>
+);
 
 export default Status;
