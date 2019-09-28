@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Square renders with text and background color 1`] = `
+<button
+  className="square"
+  onClick={[MockFunction]}
+  style={
+    Object {
+      "background": "red",
+    }
+  }
+  type="button"
+>
+  X
+</button>
+`;

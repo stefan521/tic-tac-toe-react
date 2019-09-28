@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board contains 9 squares 1`] = `
+<div>
+  <div
+    className="board-row"
+    key="0"
+  >
+    <Square
+      color="white"
+      key="0"
+      onClick={[Function]}
+      value="X"
+    />
+    <Square
+      color="lightgreen"
+      key="1"
+      onClick={[Function]}
+      value="X"
+    />
+    <Square
+      color="lightgreen"
+      key="2"
+      onClick={[Function]}
+      value="X"
+    />
+  </div>
+  <div
+    className="board-row"
+    key="1"
+  >
+    <Square
+      color="lightgreen"
+      key="3"
+      onClick={[Function]}
+      value="X"
+    />
+    <Square
+      color="white"
+      key="4"
+      onClick={[Function]}
+      value="X"
+    />
+    <Square
+      color="white"
+      key="5"
+      onClick={[Function]}
+      value="X"
+    />
+  </div>
+  <div
+    className="board-row"
+    key="2"
+  >
+    <Square
+      color="white"
+      key="6"
+      onClick={[Function]}
+      value="X"
+    />
+    <Square
+      color="white"
+      key="7"
+      onClick={[Function]}
+      value="X"
+    />
+    <Square
+      color="white"
+      key="8"
+      onClick={[Function]}
+      value="X"
+    />
+  </div>
+</div>
+`;
