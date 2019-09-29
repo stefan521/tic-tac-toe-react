@@ -1,6 +1,6 @@
 import { getGameStatus } from './helper';
 
-describe('Testing the game status helper function', () => {
+describe('Game status helper function', () => {
   it('identifies a draw', () => {
     const drawBoard = [
       'X', 'O', 'O',

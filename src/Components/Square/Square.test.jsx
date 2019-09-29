@@ -14,8 +14,6 @@ describe('Square', () => {
       value={value}
     />);
 
-    console.log(wrapper.props());
-
     expect(wrapper.props().style.background).toEqual(background);
     expect(wrapper.props().children).toEqual('X');
     expect(wrapper).toMatchSnapshot();

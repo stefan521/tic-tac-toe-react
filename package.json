@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "coverage": "react-scripts test --coverage --watchAll=false",
+    "coverage": "react-scripts test --coverage --watchAll=false --reporters='jest-stare'",
     "eject": "react-scripts eject",
     "flow": "flow"
   },
@@ -21,7 +21,13 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/src/index.jsx"
     ]
+  },
+  "jest-stare": {
+    "coverageLink": "../coverage/lcov-report/index.html"
   },
   "browserslist": {
     "production": [
@@ -45,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "flow-bin": "^0.107.0",
+    "jest-stare": "^1.19.0",
     "react-test-renderer": "^16.10.1"
   }
 }
