@@ -78,6 +78,12 @@ class Game extends React.Component<Props, State> {
 
     return (
       <div className="game">
+        <div className="next-player">
+          <Status
+            xIsNext={xIsNext}
+            status={status}
+          />
+        </div>
         <div className="game-board">
           <Board
             squares={current.squares}
@@ -86,10 +92,6 @@ class Game extends React.Component<Props, State> {
           />
         </div>
         <div className="game-info">
-          <Status
-            xIsNext={xIsNext}
-            status={status}
-          />
           <Summary
             moves={moves}
             stepNumber={stepNumber}

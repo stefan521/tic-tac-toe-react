@@ -8,14 +8,25 @@ type Props = {
   onClick: Function
 };
 
-class Board extends React.Component<Props> {
-  pickSquareColor(squareNumber: number) {
+type State = {
+  boardSize: number;
+};
+
+class Board extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      boardSize: 9,
+    };
+  }
+
+  isWinSquare(squareNumber: number) {
     const { winLine } = this.props;
     if (winLine && winLine.includes(squareNumber)) {
-      return 'lightgreen';
+      return true;
     }
 
-    return 'white';
+    return false;
   }
 
   renderSquare(squareNumber: number) {
@@ -26,7 +37,7 @@ class Board extends React.Component<Props> {
       <Square
         value={squares[squareNumber]}
         onClick={() => onClick(squareNumber)}
-        color={this.pickSquareColor(squareNumber)}
+        winSquare={this.isWinSquare(squareNumber)}
         key={squareNumber}
       />
     );
@@ -34,20 +45,18 @@ class Board extends React.Component<Props> {
 
   render() {
     // eslint-disable-next-line prefer-const
-    let rows = [];
-    const boardSize = 3;
+    let squares = Array(9);
+    const { boardSize } = this.state;
 
     for (let i = 0; i < boardSize; i += 1) {
-      // eslint-disable-next-line prefer-const
-      let row = [];
-      for (let j = 0; j < boardSize; j += 1) {
-        const squareNumber = i * boardSize + j;
-        row.push(this.renderSquare(squareNumber));
-      }
-      rows.push(<div className="board-row" key={i}>{row}</div>);
+      squares[i] = this.renderSquare(i);
     }
 
-    return (<div>{rows}</div>);
+    return (
+      <div className="grid-wrapper">
+        <div className="grid-container">{squares}</div>
+      </div>
+    );
   }
 }
 

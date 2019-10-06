@@ -3,23 +3,24 @@ import React from 'react';
 
 type Props = {
   onClick: Function,
-  color: string,
+  winSquare: boolean,
   value: string
 };
 
 export default function Square(props: Props) {
   const { onClick } = props;
-  const { color } = props;
+  const { winSquare } = props;
   const { value } = props;
 
   return (
-    <button
-      type="button"
-      className="square"
-      onClick={onClick}
-      style={{ background: color }}
-    >
-      {value}
-    </button>
+    <div className="grid-item">
+      <button
+        type="button"
+        className={winSquare ? 'win-square square' : 'square'}
+        onClick={onClick}
+      >
+        {value}
+      </button>
+    </div>
   );
 }

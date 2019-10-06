@@ -1,11 +1,12 @@
 // @flow
 import React from 'react';
 
-type GameStatus = {
+type Props = {
   status: {
     gameEnded: boolean,
     winner: string
-  }
+  },
+  xIsNext : boolean
 };
 
 function getStatus(status, xIsNext) {
@@ -16,16 +17,21 @@ function getStatus(status, xIsNext) {
   } else if (status.gameEnded) {
     statusLine = 'Draw';
   } else {
-    statusLine = `Next player: ${xIsNext ? 'X' : 'O'}`;
+    statusLine = `Next player: ${xIsNext === true ? 'X' : 'O'}`;
   }
 
   return statusLine;
 }
 
-const Status = ({ status }: GameStatus, xIsNext: boolean) => (
-  <div className="game-status">
-    {getStatus(status, xIsNext)}
-  </div>
-);
+function Status(props: Props) {
+  const { status } = props;
+  const { xIsNext } = props;
+
+  return (
+    <div className="game-status">
+      {getStatus(status, xIsNext)}
+    </div>
+  );
+}
 
 export default Status;
