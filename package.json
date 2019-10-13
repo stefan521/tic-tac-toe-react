@@ -2,7 +2,9 @@
   "name": "tictactoe",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://stefan521.github.io/TicTacToe-React",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -13,7 +15,9 @@
     "test": "react-scripts test",
     "coverage": "react-scripts test --coverage --watchAll=false --reporters='jest-stare'",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
