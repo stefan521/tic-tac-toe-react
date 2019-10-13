@@ -53,8 +53,8 @@ class Board extends React.Component<Props, State> {
     }
 
     return (
-      <div className="grid-wrapper">
-        <div className="grid-container">{squares}</div>
+      <div className="board-wrapper">
+        <div className="game-board">{squares}</div>
       </div>
     );
   }

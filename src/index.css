@@ -1,81 +1,168 @@
 @import url("https://fonts.googleapis.com/css?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
 
+/* General styles */
 body {
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg,   rgba(2,0,36,1), rgb(6, 6, 68));
-  font-family: 'Fredoka One', cursive, sans-serif;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(41, 206, 198));
+  min-height: 100vh;
+  font-family: 'Righteous', cursive;
 }
-.game-status {
-  color: white;
+
+button {
+  border: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+.game {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Board and square styles */
+.board-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 60vmin;
+  min-width: 200px;
+}
+
+.board-wrapper:after {
+  content: "";
+  display: inline-block;
+  padding-bottom: 100%;
 }
 
 .game-board {
-  font-size: 3vw;
-  min-height: 100px;
-}
-
-/* padding same as with makes this a square,
-   because the grid-container has absolute position*/
-.grid-wrapper {
-  display: inline-block;
-  position: relative;
-  width: 30%;
-  padding-bottom: 30%;
-}
-
-.grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 33.3%);
+  grid-template-rows: repeat(3, 1fr);
   grid-row-gap: 0;
   position: absolute;
   width: 100%;
   height: 100%;
-  min-width: 90px;
-  min-height: 90px;
 }
 
-.grid-item,
-.grid-item button {
-  min-width: 30px;
-  min-height: 30px;
+.grid-item {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: rgb(255, 255, 255);
+  opacity:  0.7;
+  border: 2px solid rgb(63, 63, 63);
 }
 
 .square {
-  display: block;
-  background: white;
-  opacity:  0.5;
+  background: transparent;
   width: 100%;
   height:  100%;
-  border: 1px solid rgb(0, 0, 0);
-  font-size: 5vw;
+  font-size: 10vmin;
 }
 
-.square:focus {
-  outline: none;
+.grid-item:hover {
+  opacity: 0.8;
 }
 
-.square:hover {
-  background: rgb(230, 230, 230);
+.game-info {
+  margin-left: 20px;
+  text-align: left;
 }
 
-.square,
-.game-status,
-.game-info,
 .game-info button {
+  text-align: center;
+  font-size: 0.8em;
+  font-family: inherit;
+  color: white;
+  margin-top: 1em;
+  padding: 5px 0 5px 0;
+  border-radius: 25px;
+  background: black;
+}
+
+#button-reverse {
+  margin-bottom: 1em;
+}
+
+.square {
   font-family: 'Fredoka One', cursive, sans-serif;
 }
 
-.win-square {
-  color: rgb(0, 97, 0);
-  opacity: 1;
+.win-x,
+.win-o {
+  color:  rgb(41, 206, 198);
 }
 
-@media screen and (max-width: 400px) {
+.win-x {
+  animation: spin 5s ease infinite;
+}
+
+.win-o {
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Game info styles */
+.history {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 150px;
+}
+
+.game-status {
+  color: white;
+}
+
+/* Change layout below 700px */
+@media all and (max-width: 700px) {
   .square {
-    font-size: 20px;
+    font-size: 50px;
+  }
+
+  .game {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .game-info {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .board-wrapper {
+    width: 70%;
+  }
+
+  .grid-item {
+    border-width: 1px;
   }
 }

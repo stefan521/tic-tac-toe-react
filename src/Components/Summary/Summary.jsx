@@ -1,6 +1,7 @@
 // @flow
 /* eslint-disable class-methods-use-this */
 import React from 'react';
+import Status from '../Status/Status.jsx';
 
 type Move = {
   player: string,
@@ -10,7 +11,13 @@ type Move = {
 type Props = {
   moves: Array<Move>,
   onClick: Function,
-  stepNumber: number
+  stepNumber: number,
+  xIsNext: boolean,
+  status: {
+    gameEnded: boolean,
+    winner: string,
+    line: Array<any>
+  }
 };
 
 type State = {
@@ -61,18 +68,15 @@ class Summary extends React.Component<Props, State> {
 
     const movesList = orderedMoves.map<any>((move: Move, index: number) => {
       const summary = this.getPlaySummary(move);
+
       return (
-        // eslint-disable-next-line react/no-array-index-key
-        <li key={index}>
-          <button
-            type="button"
-            onClick={() => onClick(this.getMoveAtIndex(index))}
-            style={(this.getMoveAtIndex(index) === stepNumber)
-              ? { fontWeight: 'bold' } : { fontWeight: 'normal' }}
-          >
-            {summary}
-          </button>
-        </li>
+        <button
+          type="button"
+          onClick={() => onClick(this.getMoveAtIndex(index))}
+          style={(this.getMoveAtIndex(index) === stepNumber) ? { color: 'rgb(206, 41, 151)' } : { color: 'white' }}
+        >
+          {summary}
+        </button>
       );
     });
 
@@ -89,18 +93,27 @@ class Summary extends React.Component<Props, State> {
 
   render() {
     const { descending } = this.state;
+    const { xIsNext } = this.props;
+    const { status } = this.props;
 
     return (
-      <div>
-        <button
-          type="button"
-          onClick={() => this.reverseMoves()}
-        >
-          { `view moves ${descending ? 'descending' : 'ascending'}` }
-        </button>
-        <ol reversed={!descending}>
+      <div className="game-info">
+        <div className="next-player">
+          <Status
+            xIsNext={xIsNext}
+            status={status}
+          />
+        </div>
+        <div className="history">
+          <button
+            type="button"
+            id="button-reverse"
+            onClick={() => this.reverseMoves()}
+          >
+            { `view moves ${descending ? 'descending' : 'ascending'}` }
+          </button>
           {this.getMoves()}
-        </ol>
+        </div>
       </div>
     );
   }

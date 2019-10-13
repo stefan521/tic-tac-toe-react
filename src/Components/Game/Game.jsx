@@ -2,7 +2,6 @@
 import React from 'react';
 import Board from '../Board/Board.jsx';
 import Summary from '../Summary/Summary.jsx';
-import Status from '../Status/Status.jsx';
 import { getGameStatus } from './helper';
 
 type Props = any;
@@ -78,26 +77,18 @@ class Game extends React.Component<Props, State> {
 
     return (
       <div className="game">
-        <div className="next-player">
-          <Status
-            xIsNext={xIsNext}
-            status={status}
-          />
-        </div>
-        <div className="game-board">
-          <Board
-            squares={current.squares}
-            onClick={(square) => this.handleClick(square)}
-            winLine={status.line}
-          />
-        </div>
-        <div className="game-info">
-          <Summary
-            moves={moves}
-            stepNumber={stepNumber}
-            onClick={(step) => this.jumpTo(step)}
-          />
-        </div>
+        <Board
+          squares={current.squares}
+          onClick={(square) => this.handleClick(square)}
+          winLine={status.line}
+        />
+        <Summary
+          moves={moves}
+          stepNumber={stepNumber}
+          onClick={(step) => this.jumpTo(step)}
+          status={status}
+          xIsNext={xIsNext}
+        />
       </div>
     );
   }
