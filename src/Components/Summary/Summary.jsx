@@ -62,7 +62,6 @@ class Summary extends React.Component<Props, State> {
     const { descending } = this.state;
     const { moves } = this.props;
     const { onClick } = this.props;
-    const { stepNumber } = this.props;
 
     const orderedMoves = descending ? moves : moves.slice().reverse();
 
@@ -73,7 +72,7 @@ class Summary extends React.Component<Props, State> {
         <button
           type="button"
           onClick={() => onClick(this.getMoveAtIndex(index))}
-          style={(this.getMoveAtIndex(index) === stepNumber) ? { color: 'rgb(206, 41, 151)' } : { color: 'white' }}
+          className={this.checkCurrentMove(index)}
         >
           {summary}
         </button>
@@ -81,6 +80,16 @@ class Summary extends React.Component<Props, State> {
     });
 
     return movesList;
+  }
+
+  checkCurrentMove(index: number) {
+    const { stepNumber } = this.props;
+
+    if (this.getMoveAtIndex(index) === stepNumber) {
+      return 'btn-current-move';
+    }
+
+    return 'btn-history';
   }
 
   reverseMoves() {
