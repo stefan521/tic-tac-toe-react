@@ -70,6 +70,7 @@ class Summary extends React.Component<Props, State> {
 
       return (
         <button
+          key={move.square}
           type="button"
           onClick={() => onClick(this.getMoveAtIndex(index))}
           className={this.checkCurrentMove(index)}

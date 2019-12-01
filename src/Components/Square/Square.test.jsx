@@ -4,18 +4,16 @@ import Square from './Square.jsx';
 
 describe('Square', () => {
   const clickHandler = jest.fn();
-  const background = 'red';
   const value = 'X';
 
   it('renders with text and background color', () => {
     const wrapper = shallow(<Square
-      color={background}
+      winSquare={false}
       onClick={clickHandler}
       value={value}
     />);
 
-    expect(wrapper.props().style.background).toEqual(background);
-    expect(wrapper.props().children).toEqual('X');
+    expect(wrapper.props().className).toEqual('grid-item');
     expect(wrapper).toMatchSnapshot();
   });
 });
