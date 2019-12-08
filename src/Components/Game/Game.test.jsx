@@ -40,5 +40,7 @@ describe('Game', () => {
     expect(game.state('history').length).toBe(2);
     expect(game.state('history')[0].squares.every((el, index) => el === firstHistory[index])).toBeTruthy();
     expect(game.state('history')[1].squares.every((el, index) => el === secondHistory[index])).toBeTruthy();
+    expect(game.state('stepNumber')).toBe(1);
+    expect(game.state('xIsNext')).toBeFalsy();
   });
 });

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status matches snapshot 1`] = `
+<div
+  className="game-info"
+>
+  <div
+    className="next-player"
+  >
+    <Status
+      status={
+        Object {
+          "gameEnded": false,
+          "line": null,
+          "winner": null,
+        }
+      }
+      xIsNext={true}
+    />
+  </div>
+  <div
+    className="history"
+  >
+    <button
+      id="button-reverse"
+      onClick={[Function]}
+      type="button"
+    >
+      view moves descending
+    </button>
+    <button
+      className="btn-history"
+      key="0"
+      onClick={[Function]}
+      type="button"
+    >
+      go to move X at (0, 2)
+    </button>
+    <button
+      className="btn-history"
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      go to move O at (1, 2)
+    </button>
+  </div>
+</div>
+`;
