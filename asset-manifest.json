@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/TicTacToe-React/static/css/main.07fd1347.chunk.css",
-    "main.js": "/TicTacToe-React/static/js/main.bf3d8d05.chunk.js",
-    "main.js.map": "/TicTacToe-React/static/js/main.bf3d8d05.chunk.js.map",
-    "runtime~main.js": "/TicTacToe-React/static/js/runtime~main.39cad35b.js",
-    "runtime~main.js.map": "/TicTacToe-React/static/js/runtime~main.39cad35b.js.map",
-    "static/js/2.7716867a.chunk.js": "/TicTacToe-React/static/js/2.7716867a.chunk.js",
-    "static/js/2.7716867a.chunk.js.map": "/TicTacToe-React/static/js/2.7716867a.chunk.js.map",
+    "main.css": "/TicTacToe-React/static/css/main.10fa2072.chunk.css",
+    "main.js": "/TicTacToe-React/static/js/main.b618fe28.chunk.js",
+    "main.js.map": "/TicTacToe-React/static/js/main.b618fe28.chunk.js.map",
+    "runtime-main.js": "/TicTacToe-React/static/js/runtime-main.a5a9458f.js",
+    "runtime-main.js.map": "/TicTacToe-React/static/js/runtime-main.a5a9458f.js.map",
+    "static/js/2.827857ef.chunk.js": "/TicTacToe-React/static/js/2.827857ef.chunk.js",
+    "static/js/2.827857ef.chunk.js.map": "/TicTacToe-React/static/js/2.827857ef.chunk.js.map",
     "index.html": "/TicTacToe-React/index.html",
-    "precache-manifest.9bcd882362c750ccfcc96b1bb1115527.js": "/TicTacToe-React/precache-manifest.9bcd882362c750ccfcc96b1bb1115527.js",
+    "precache-manifest.b0d18d964c096efa5e3a78e9caf27751.js": "/TicTacToe-React/precache-manifest.b0d18d964c096efa5e3a78e9caf27751.js",
     "service-worker.js": "/TicTacToe-React/service-worker.js",
-    "static/css/main.07fd1347.chunk.css.map": "/TicTacToe-React/static/css/main.07fd1347.chunk.css.map"
-  }
+    "static/css/main.10fa2072.chunk.css.map": "/TicTacToe-React/static/css/main.10fa2072.chunk.css.map",
+    "static/js/2.827857ef.chunk.js.LICENSE.txt": "/TicTacToe-React/static/js/2.827857ef.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a5a9458f.js",
+    "static/js/2.827857ef.chunk.js",
+    "static/css/main.10fa2072.chunk.css",
+    "static/js/main.b618fe28.chunk.js"
+  ]
 }
