@@ -54,7 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "flow-bin": "^0.107.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "jest-stare": "^1.19.0",
     "react-test-renderer": "^16.10.1"
   }
