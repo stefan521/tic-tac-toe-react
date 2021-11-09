@@ -7,7 +7,7 @@
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -55,7 +55,7 @@
     "eslint-plugin-react": "^7.14.3",
     "flow-bin": "^0.107.0",
     "handlebars": "^4.7.7",
-    "jest-stare": "^1.19.0",
+    "jest-stare": "^2.3.0",
     "react-test-renderer": "^16.10.1"
   }
 }
